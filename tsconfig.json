@@ -8,12 +8,12 @@
 		"baseUrl": "src",
 		"paths": {
       "@/components/*": ["components/*"],
+      "@/provider/*": ["provider/*"],
       "@/views/*": ["views/*"],
       "@/layouts/*": ["layouts/*"],
       "@/types/*": ["types/*"],
       "@/api/*": ["api/*"],
       "@/lib/*": ["lib/*"],
-      "@/provider/*": ["provider/*"],
     },
 
 		/* Bundler mode */
