@@ -1,3 +1,4 @@
+import { createProject } from '@/api/project-api';
 import { CustomLink } from '@/components/CustomLink';
 import { ProjectForm } from '@/components/projects/ProjectForm';
 import { useForm } from 'react-hook-form';
@@ -17,7 +18,7 @@ export const CreateProjectView = () => {
 	} = useForm({ defaultValues: initialValue });
 
 	const handleForm = (data: ProjectFormData) => {
-		console.log(data);
+		createProject(data)
 	};
 	return (
 		<>
