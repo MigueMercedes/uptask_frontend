@@ -37,7 +37,7 @@ export const CreateProjectView = () => {
         <nav className="my-5">
           <CustomLink
             title="Go back to Projects"
-            to="/projects/create"
+            to="/projects"
           />
         </nav>
 
