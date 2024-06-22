@@ -3,9 +3,9 @@ import { ProjectForm } from '@/components/projects/ProjectForm';
 import { useCreateProjectMutation } from '@/provider/queries/project';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { ProjectFormData } from 'types/projects';
+import { ProjectFormDataType } from '@/types/projects'
 
-const initialValue: ProjectFormData = {
+const initialValue: ProjectFormDataType = {
   projectName: '',
   clientName: '',
   description: '',
@@ -21,9 +21,9 @@ export const CreateProjectView = () => {
 
   const { mutate } = useCreateProjectMutation();
 
-  const handleForm = (formData: ProjectFormData) => {
+  const handleForm = (formData: ProjectFormDataType) => {
     mutate(formData);
-    navigate('/');
+    navigate('/projects');
   };
 
   return (
@@ -37,7 +37,7 @@ export const CreateProjectView = () => {
         <nav className="my-5">
           <CustomLink
             title="Go back to Projects"
-            to="/projects"
+            to="/"
           />
         </nav>
 
