@@ -1,6 +1,6 @@
 import { CustomLink } from '@/components/CustomLink';
 import { ProjectFormData } from '@/types/projects';
-import { FieldErrors, UseFormHandleSubmit, UseFormRegister } from 'react-hook-form';
+import { FieldErrors, FieldValues, UseFormHandleSubmit, UseFormRegister } from 'react-hook-form';
 import { ProjectFormFields } from './FormFields';
 
 type ProjectFormProps = {
@@ -28,7 +28,7 @@ export const ProjectForm = ({
       <h1 className='text-5xl font-black'>{title}</h1>
       <p className='text-2xl font-light text-gray-500 mt-5'>{subTitle}</p>
 
-      <nav className='my-5'>
+      <nav className='my-5 text-right'>
         <CustomLink title='Go back' to='../' />
       </nav>
 

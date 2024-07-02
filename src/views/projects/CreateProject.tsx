@@ -1,9 +1,8 @@
-import { CustomLink } from '@/components/CustomLink';
+import { ProjectForm } from '@/components/projects/Form';
 import { useCreateProjectMutation } from '@/provider/queries/project';
+import { ProjectFormData } from '@/types/projects';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { ProjectFormData } from '@/types/projects';
-import { ProjectForm } from '@/components/projects/Form';
 
 const initialValue: ProjectFormData = {
   projectName: '',
@@ -12,12 +11,13 @@ const initialValue: ProjectFormData = {
 };
 
 export const CreateProjectView = () => {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ defaultValues: initialValue });
-  const navigate = useNavigate();
+  } = useForm<ProjectFormData>({ defaultValues: initialValue });
 
   const { mutate } = useCreateProjectMutation();
 

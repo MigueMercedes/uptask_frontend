@@ -26,5 +26,6 @@ export const useGetProjectByIdQuery = (id: Project['_id']) => {
   return useQuery({
     queryFn: () => getProjectById(id),
     queryKey: ['update-project', id],
+    retry: false,
   });
 };

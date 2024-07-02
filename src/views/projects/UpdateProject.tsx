@@ -1,55 +1,44 @@
 import { ProjectForm } from '@/components/projects/Form';
 import { useGetProjectByIdQuery } from '@/provider/queries/project';
 import { ProjectFormData } from '@/types/projects';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Navigate, useParams } from 'react-router-dom';
 
 export const UpdateProjectView = () => {
   const { projectId } = useParams();
-  const { data, isLoading, error, isError } = useGetProjectByIdQuery(projectId!);
-  const [shouldRedirect, setShouldRedirect] = useState(false);
 
-  useEffect(() => {
-    if (!data || isError) {
-      setShouldRedirect(true);
-    }
-  }, [data, isError]);
-
-  if (shouldRedirect) {
-    return <Navigate to='/404' />;
-  }
-
-  if (isLoading) {
-    return 'Loading...';
-  }
-
-  const { clientName, projectName, description } = data;
-
-  const initialValues: ProjectFormData = {
-    clientName,
-    projectName,
-    description,
-  };
+  const { data, isLoading, isError } = useGetProjectByIdQuery(projectId!);
 
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
-  } = useForm({ defaultValues: initialValues });
+  } = useForm<ProjectFormData>();
 
-  const handleForm = () => {};
-  console.log(data);
+  const handleForm = (formData: ProjectFormData) => {
+    console.log(formData);
+  };
+
+  useEffect(() => {
+    if (data) reset(data);
+  }, [data, reset]);
+
+  if (isLoading) return <> Loading... </>;
+  if (isError) return <Navigate to='/404' />;
+
   return (
-    <ProjectForm
-      title='Update Projects'
-      subTitle='Update your project'
-      btnTitle='Update Project'
-      data={initialValues}
-      errors={errors}
-      handleForm={handleForm}
-      handleSubmit={handleSubmit}
-      register={register}
-    />
+    <>
+      <ProjectForm
+        title='Update Projects'
+        subTitle='Complete the form to update a project'
+        btnTitle='Update Project'
+        handleForm={handleForm}
+        handleSubmit={handleSubmit}
+        register={register}
+        errors={errors}
+      />
+    </>
   );
 };
