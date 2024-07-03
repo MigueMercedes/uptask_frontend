@@ -1,18 +1,18 @@
-import { CustomLink } from '@/components/CustomLink';
-import { ProjectFormData } from '@/types/projects';
-import { FieldErrors, FieldValues, UseFormHandleSubmit, UseFormRegister } from 'react-hook-form';
-import { ProjectFormFields } from './FormFields';
+import { CustomLink } from '@/components/CustomLink'
+import { ProjectFormData } from '@/types/projects'
+import { FieldErrors, UseFormHandleSubmit, UseFormRegister } from 'react-hook-form'
+import { ProjectFormFields } from './FormFields'
 
 type ProjectFormProps = {
-  title: string;
-  subTitle: string;
-  btnTitle: string;
-  data?: ProjectFormData;
-  register: UseFormRegister<ProjectFormData>;
-  handleSubmit: UseFormHandleSubmit<any, undefined>;
-  errors: FieldErrors<ProjectFormData>;
-  handleForm: (data: ProjectFormData) => void;
-};
+  title: string
+  subTitle: string
+  btnTitle: string
+  data?: ProjectFormData
+  register: UseFormRegister<ProjectFormData>
+  handleSubmit: UseFormHandleSubmit<any, undefined>
+  errors: FieldErrors<ProjectFormData>
+  handleForm: (data: ProjectFormData) => void
+}
 
 export const ProjectForm = ({
   title,
@@ -42,5 +42,5 @@ export const ProjectForm = ({
         />
       </form>
     </div>
-  );
-};
+  )
+}

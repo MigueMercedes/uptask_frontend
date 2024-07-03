@@ -1,31 +1,50 @@
-import { Project } from '@/types/projects';
-import { useMutation, useQuery } from '@tanstack/react-query';
-import { toast } from 'react-toastify';
-import { createProject, getProjectById, getProjects } from '../api/project';
+import { Project } from '@/types/projects'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { toast } from 'react-toastify'
+import { createProject, getOneProject, getProjects, updateProject } from '../api/project'
 
 export const useCreateProjectMutation = () => {
+  const queryClient = useQueryClient()
+
   return useMutation({
     mutationFn: createProject,
-    onSuccess: (data: any) => {
-      toast.success(data?.message);
+    onSuccess: ({ message }) => {
+      queryClient.invalidateQueries({ queryKey: ['projects'] })
+
+      toast.success(message)
     },
-    onError: (error: any) => {
-      toast.error(error?.message);
-    },
-  });
-};
+    onError: ({ message }) => {
+      toast.error(message)
+    }
+  })
+}
 
 export const useGetProjectsQuery = () => {
   return useQuery({
     queryFn: getProjects,
-    queryKey: ['projects'],
-  });
-};
+    queryKey: ['projects']
+  })
+}
 
-export const useGetProjectByIdQuery = (id: Project['_id']) => {
+export const useGetOneProjectQuery = (id: Project['_id']) => {
   return useQuery({
-    queryFn: () => getProjectById(id),
-    queryKey: ['update-project', id],
-    retry: false,
-  });
-};
+    queryFn: () => getOneProject(id),
+    queryKey: ['update-project', id]
+  })
+}
+
+export const useUpdateProjectMutation = (id: Project['_id']) => {
+  const queryClient = useQueryClient()
+
+  return useMutation({
+    mutationFn: updateProject,
+    onSuccess: ({ message }) => {
+      queryClient.invalidateQueries({ queryKey: ['projects'] })
+      queryClient.invalidateQueries({ queryKey: ['update-project', id] })
+      toast.success(message)
+    },
+    onError: ({ message }) => {
+      toast.error(message)
+    }
+  })
+}

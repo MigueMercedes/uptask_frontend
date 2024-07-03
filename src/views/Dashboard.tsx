@@ -1,14 +1,14 @@
-import { CustomLink } from '@/components/CustomLink';
-import { ProjectList } from '@/components/projects/List';
-import { useGetProjectsQuery } from '@/provider/queries/project';
-import { Link, Navigate } from 'react-router-dom';
+import { CustomLink } from '@/components/CustomLink'
+import { ProjectList } from '@/components/projects/List'
+import { useGetProjectsQuery } from '@/provider/queries/project'
+import { Link, Navigate } from 'react-router-dom'
 
 export const DashboardView = () => {
-  const { data, isLoading, isError, error } = useGetProjectsQuery();
+  const { data, isLoading, isError } = useGetProjectsQuery()
 
-  if (isLoading) return 'Loading...';
+  if (isLoading) return 'Loading...'
 
-  if (isError) return <Navigate to='/404' />;
+  if (isError) return <Navigate to='/404' />
 
   return (
     <>
@@ -30,5 +30,5 @@ export const DashboardView = () => {
         </p>
       )}
     </>
-  );
-};
+  )
+}

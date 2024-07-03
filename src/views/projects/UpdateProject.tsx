@@ -1,32 +1,40 @@
-import { ProjectForm } from '@/components/projects/Form';
-import { useGetProjectByIdQuery } from '@/provider/queries/project';
-import { ProjectFormData } from '@/types/projects';
-import { useEffect } from 'react';
-import { useForm } from 'react-hook-form';
-import { Navigate, useParams } from 'react-router-dom';
+import { ProjectForm } from '@/components/projects/Form'
+import { useGetOneProjectQuery, useUpdateProjectMutation } from '@/provider/queries/project'
+import { ProjectFormData } from '@/types/projects'
+import { useEffect } from 'react'
+import { useForm } from 'react-hook-form'
+import { Navigate, useNavigate, useParams } from 'react-router-dom'
 
 export const UpdateProjectView = () => {
-  const { projectId } = useParams();
-
-  const { data, isLoading, isError } = useGetProjectByIdQuery(projectId!);
+  const { projectId } = useParams()
+  const navigate = useNavigate()
 
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
-  } = useForm<ProjectFormData>();
+    formState: { errors }
+  } = useForm<ProjectFormData>()
+
+  const { data: projectData, isLoading, isError } = useGetOneProjectQuery(projectId!)
+
+  const { mutate } = useUpdateProjectMutation(projectId!)
 
   const handleForm = (formData: ProjectFormData) => {
-    console.log(formData);
-  };
+    mutate({
+      id: projectId!,
+      project: formData
+    })
+
+    navigate('/')
+  }
 
   useEffect(() => {
-    if (data) reset(data);
-  }, [data, reset]);
+    if (projectData) reset(projectData)
+  }, [projectData, reset])
 
-  if (isLoading) return <> Loading... </>;
-  if (isError) return <Navigate to='/404' />;
+  if (isLoading) return <> Loading... </>
+  if (isError) return <Navigate to='/404' />
 
   return (
     <>
@@ -40,5 +48,5 @@ export const UpdateProjectView = () => {
         errors={errors}
       />
     </>
-  );
-};
+  )
+}

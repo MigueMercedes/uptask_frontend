@@ -1,11 +1,11 @@
-import { ErrorMessage } from '@/components/ErrorMessage';
-import { FieldErrors, UseFormRegister } from 'react-hook-form';
-import { ProjectFormData } from 'types/projects';
+import { ErrorMessage } from '@/components/ErrorMessage'
+import { FieldErrors, UseFormRegister } from 'react-hook-form'
+import { ProjectFormData } from 'types/projects'
 
 type ProjectFormProps = {
-  register: UseFormRegister<ProjectFormData>;
-  errors: FieldErrors<ProjectFormData>;
-};
+  register: UseFormRegister<ProjectFormData>
+  errors: FieldErrors<ProjectFormData>
+}
 
 export const ProjectFormFields = ({ register, errors }: ProjectFormProps) => {
   return (
@@ -53,12 +53,12 @@ export const ProjectFormFields = ({ register, errors }: ProjectFormProps) => {
           className='w-full p-3  border border-gray-200'
           placeholder='Descripción del Proyecto'
           {...register('description', {
-            required: 'The Description is required',
+            required: false,
           })}
         />
 
         {errors.description && <ErrorMessage>{errors.description.message}</ErrorMessage>}
       </div>
     </>
-  );
-};
+  )
+}
