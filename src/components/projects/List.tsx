@@ -1,27 +1,44 @@
-import { Project } from '@/types/projects';
-import { Menu, MenuButton, MenuItem, MenuItems, Transition } from '@headlessui/react';
-import { EllipsisVerticalIcon } from '@heroicons/react/20/solid';
-import { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import { Project } from '@/types/projects'
+import { Menu, MenuButton, MenuItem, MenuItems, Transition } from '@headlessui/react'
+import { EllipsisVerticalIcon } from '@heroicons/react/20/solid'
+import { Fragment } from 'react'
+import { Link } from 'react-router-dom'
 
 interface IProps {
-  projects: Project[];
+  projects: Project[]
 }
 
 export const ProjectList = ({ projects }: IProps) => {
   return (
-    <ul role='list' className='divide-y divide-gray-100 border border-gray-100 mt-10 bg-white shadow-lg'>
-      {projects.map((project) => (
+    <ul
+      role='list'
+      className='
+        border
+        mt-10
+        divide-y
+        shadow-lg
+        dark:bg-secondary-background-dark
+        dark:divide-secondary-dark
+        dark:border-secondary-dark
+        divide-gray-100
+        border-gray-100
+        bg-white
+      '
+    >
+      {projects.map(project => (
         <li key={project._id} className='flex justify-between gap-x-6 px-5 py-10'>
           <div className='flex min-w-0 gap-x-4'>
             <div className='min-w-0 flex-auto space-y-2'>
-              <Link to={``} className='text-gray-600 cursor-pointer hover:underline text-3xl font-bold'>
+              <Link
+                to={``}
+                className='dark:text-secondary-dark text-gray-600 cursor-pointer hover:underline text-3xl font-bold'
+              >
                 {project.projectName}
               </Link>
-              <p className='text-sm text-gray-400'>
+              <p className='dark:text-white text-sm text-gray-400'>
                 <span className='font-bold'>Client:</span> {project.clientName}
               </p>
-              <p className='text-sm text-gray-400'>{project.description}</p>
+              <p className='dark:text-gray-200 text-sm text-gray-400'>{project.description}</p>
             </div>
           </div>
           <div className='flex shrink-0 items-center gap-x-6'>
@@ -65,5 +82,5 @@ export const ProjectList = ({ projects }: IProps) => {
         </li>
       ))}
     </ul>
-  );
-};
+  )
+}

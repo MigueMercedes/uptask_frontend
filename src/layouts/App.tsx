@@ -1,13 +1,13 @@
-import { Logo } from '@/components/Logo';
-import { NavMenu } from '@/components/NavMenu';
-import { Outlet } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/ReactToastify.css';
+import { Logo } from '@/components/Logo'
+import { NavMenu } from '@/components/NavMenu'
+import { Outlet } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/ReactToastify.css'
 
 export const AppLayout = () => {
   return (
-    <>
-      <header className='bg-gray-800 py-5'>
+    <div className='dark:bg-background-dark'>
+      <header className='py-5 dark:bg-primary-dark'>
         <div className='max-w-screen-2xl mx-auto flex flex-col lg:flex-row justify-between items-center'>
           <div className='w-64'>
             <Logo />
@@ -26,6 +26,6 @@ export const AppLayout = () => {
       </footer>
 
       <ToastContainer pauseOnHover={false} pauseOnFocusLoss={false} />
-    </>
-  );
-};
+    </div>
+  )
+}

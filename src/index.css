@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+	/* Light Mode */
+	--primary-color-light: #3A015C !important;
+	--secondary-color-light: #9C4DCC !important;
+	--tertiary-color-light: #F3DFF8 !important;
+
+	--background-color-light: #FFFFFF !important;
+	--secondary-background-color-light: #F3F3F3 !important;
+	--surface-background-color-light: #E6E6E6 !important;
+
+	--primary-text-color-light: #1F1F1F !important;
+	--secondary-text-color-light: #4A4A4A !important;
+	--highlight-text-color-light: #9C4DCC !important;
+
+	/* Dark Mode */
+	--primary-color-dark: #3A015C !important;
+	--secondary-color-dark: #BB86FC !important;
+	--tertiary-color-dark: #6200EA !important;
+
+	--background-color-dark: #121212 !important;
+	--secondary-background-color-dark: #1F1F1F !important;
+	--surface-background-color-dark: #2C2C2C !important;
+
+	--primary-text-color-dark: #E1E1E1 !important;
+	--secondary-text-color-dark: #B3B3B3 !important;
+	--highlight-text-color-dark: #BB86FC !important;
+}

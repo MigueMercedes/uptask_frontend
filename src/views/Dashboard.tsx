@@ -1,7 +1,7 @@
 import { CustomLink } from '@/components/CustomLink'
 import { ProjectList } from '@/components/projects/List'
 import { useGetProjectsQuery } from '@/provider/queries/project'
-import { Link, Navigate } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 
 export const DashboardView = () => {
   const { data, isLoading, isError } = useGetProjectsQuery()
@@ -12,8 +12,8 @@ export const DashboardView = () => {
 
   return (
     <>
-      <h1 className='text-5xl font-black'>My Projects</h1>
-      <p className='text-2xl font-light text-gray-500 mt-5'>Manage your projects</p>
+      <h1 className='dark:text-tertiary-dark text-5xl font-black'>Projects</h1>
+      <p className='text-gray-500 dark:text-secondary-dark text-2xl font-light mt-5'>Manage your projects</p>
 
       <nav className='my-5'>
         <CustomLink title='Create Project' to='/projects/create' />
@@ -24,9 +24,7 @@ export const DashboardView = () => {
       ) : (
         <p className='text-center py-20'>
           You don't have projects yet {''}
-          <Link to='/projects/create' className='text-fuchsia-500 hover:text-fuchsia-600 font-bold'>
-            Create Project
-          </Link>
+          <CustomLink title='Create Project' to='/projects/create' />
         </p>
       )}
     </>
