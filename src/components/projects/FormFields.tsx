@@ -11,12 +11,12 @@ export const ProjectFormFields = ({ register, errors }: ProjectFormProps) => {
   return (
     <>
       <div className='mb-5 space-y-3'>
-        <label htmlFor='projectName' className='text-sm uppercase font-bold'>
+        <label htmlFor='projectName' className='dark:text-white text-sm uppercase font-bold'>
           Project Name
         </label>
         <input
           id='projectName'
-          className='w-full p-3  border border-gray-200'
+          className='dark:placeholder:text-primary-dark/5 w-full p-3 border'
           type='text'
           placeholder='Project Name'
           {...register('projectName', {
@@ -28,12 +28,12 @@ export const ProjectFormFields = ({ register, errors }: ProjectFormProps) => {
       </div>
 
       <div className='mb-5 space-y-3'>
-        <label htmlFor='clientName' className='text-sm uppercase font-bold'>
+        <label htmlFor='clientName' className='dark:text-white text-sm uppercase font-bold'>
           Client Name
         </label>
         <input
           id='clientName'
-          className='w-full p-3  border border-gray-200'
+          className='dark:placeholder:text-primary-dark/5 dark:text-primary w-full p-3  border'
           type='text'
           placeholder='Client Name'
           {...register('clientName', {
@@ -45,12 +45,12 @@ export const ProjectFormFields = ({ register, errors }: ProjectFormProps) => {
       </div>
 
       <div className='mb-5 space-y-3'>
-        <label htmlFor='description' className='text-sm uppercase font-bold'>
+        <label htmlFor='description' className='dark:text-white text-sm uppercase font-bold'>
           Description
         </label>
         <textarea
           id='description'
-          className='w-full p-3  border border-gray-200'
+          className='dark:placeholder:text-primary-dark/5 w-full p-3  border'
           placeholder='Descripción del Proyecto'
           {...register('description', {
             required: false,

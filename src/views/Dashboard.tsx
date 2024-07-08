@@ -12,8 +12,8 @@ export const DashboardView = () => {
 
   return (
     <>
-      <h1 className='dark:text-tertiary-dark text-5xl font-black'>Projects</h1>
-      <p className='text-gray-500 dark:text-secondary-dark text-2xl font-light mt-5'>Manage your projects</p>
+      <h1 className='dark:text-white text-5xl font-black'>Projects</h1>
+      <p className='dark:text-secondary-dark text-2xl font-light text-gray-500 mt-5'>Manage your projects</p>
 
       <nav className='my-5'>
         <CustomLink title='Create Project' to='/projects/create' />
@@ -22,9 +22,9 @@ export const DashboardView = () => {
       {data?.length ? (
         <ProjectList projects={data} />
       ) : (
-        <p className='text-center py-20'>
+        <p className='dark:text-white text-center py-20'>
           You don't have projects yet {''}
-          <CustomLink title='Create Project' to='/projects/create' />
+          <CustomLink title='Create Project' to='/projects/create' customClass='dark:text-secondary-dark text-[16px] hover:underline font-bold cursor-pointer transition-colors' />
         </p>
       )}
     </>

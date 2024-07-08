@@ -7,7 +7,7 @@ interface IProps {
 export const CustomLink = ({ title, to, customClass }: IProps) => {
   return (
     <Link
-      className={`dark:bg-primary-dark dark:hover:bg-tertiary-dark bg-fuchsia-600 hover:bg-fuchsia-700 px-6 py-3 text-white text-xl font-bold cursor-pointer transition-colors ${customClass}`}
+      className={`${customClass ? customClass : 'dark:bg-primary-dark dark:hover:bg-tertiary-dark px-6 py-3 text-white text-xl font-bold cursor-pointer transition-colors'}`}
       to={to}
     >
       {title}

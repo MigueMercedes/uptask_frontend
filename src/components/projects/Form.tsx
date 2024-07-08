@@ -25,21 +25,22 @@ export const ProjectForm = ({
 }: ProjectFormProps) => {
   return (
     <div className='max-w-3xl mx-auto'>
-      <h1 className='text-5xl font-black'>{title}</h1>
-      <p className='text-2xl font-light text-gray-500 mt-5'>{subTitle}</p>
+      <h1 className='dark:text-white text-5xl font-black'>{title}</h1>
+      <p className='dark:text-secondary-dark text-2xl font-light text-gray-500 mt-5'>{subTitle}</p>
 
       <nav className='my-5 text-right'>
         <CustomLink title='Go back' to='../' />
       </nav>
 
-      <form className='mt-10 bg-white shadow-lg p-10 rounded-lg' onSubmit={handleSubmit(handleForm)} noValidate>
+      <form className='dark:bg-secondary-background-dark mt-10 bg-white shadow-lg p-10 rounded-lg' onSubmit={handleSubmit(handleForm)} noValidate>
         <ProjectFormFields register={register} errors={errors} />
 
-        <input
+        <button
           type='submit'
-          value={btnTitle}
-          className='bg-fuchsia-600 hover:bg-fuchsia-700 w-full p-3 text-white uppercase font-bold cursor-pointer transition-colors'
-        />
+          className='bg-primary-dark dark:hover:bg-tertiary-dark text-white font-bold py-2 px-4 rounded-lg w-full mt-5'
+        > 
+          {btnTitle}
+        </button>
       </form>
     </div>
   )

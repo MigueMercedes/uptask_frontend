@@ -22,7 +22,7 @@ export const AppLayout = () => {
       </section>
 
       <footer className='py-5'>
-        <p className='text-center font-semibold'>All rights reserved {new Date().getFullYear()}</p>
+        <p className='dark:text-white text-center font-semibold'>All rights reserved {new Date().getFullYear()}</p>
       </footer>
 
       <ToastContainer pauseOnHover={false} pauseOnFocusLoss={false} />
