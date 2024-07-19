@@ -50,3 +50,13 @@ export const updateProject = async ({ id, project }: { id: Project['_id']; proje
     throw errorCatcher(error)
   }
 }
+
+export const deleteProject = async (id: Project['_id']) => {
+  try {
+    const { data }: IStandardMessageResponse = await api.delete(`/projects/${id}`)
+
+    return data
+  } catch (error) {
+    throw errorCatcher(error)
+  }
+}

@@ -1,3 +1,4 @@
+import { useDeleteProjectMutation } from '@/provider/queries/project'
 import { Project } from '@/types/projects'
 import { Menu, MenuButton, MenuItem, MenuItems, Transition } from '@headlessui/react'
 import { EllipsisVerticalIcon } from '@heroicons/react/20/solid'
@@ -9,6 +10,14 @@ interface IProps {
 }
 
 export const ProjectList = ({ projects }: IProps) => {
+  const { mutate } = useDeleteProjectMutation()
+
+  const handleDelete = (id: Project['_id']) => {
+    if (!window.confirm('Are you sure you want to delete this project?')) return
+
+    mutate(id)
+  }
+
   return (
     <ul
       role='list'
@@ -27,7 +36,10 @@ export const ProjectList = ({ projects }: IProps) => {
         <li key={project._id} className='flex justify-between gap-x-6 px-5 py-10'>
           <div className='flex min-w-0 gap-x-4'>
             <div className='min-w-0 flex-auto space-y-2'>
-              <Link to={``} className='dark:border-secondary-dark dark:text-secondary-dark cursor-pointer hover:underline text-3xl font-bold'>
+              <Link
+                to={`/projects/${project._id}`}
+                className='dark:border-secondary-dark dark:text-secondary-dark cursor-pointer hover:underline text-3xl font-bold'
+              >
                 {project.projectName}
               </Link>
               <p className='dark:text-white text-sm text-gray-400'>
@@ -53,7 +65,7 @@ export const ProjectList = ({ projects }: IProps) => {
               >
                 <MenuItems className='dark:border border-secondary-dark dark:bg-secondary-background-dark absolute right-0 z-10 mt-2 w-56 z rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none'>
                   <MenuItem>
-                    <Link to={``} className='dark:text-white block px-3 py-1 text-sm leading-6 text-gray-900'>
+                    <Link to={`/projects/${project._id}`} className='dark:text-white block px-3 py-1 text-sm leading-6 text-gray-900'>
                       View
                     </Link>
                   </MenuItem>
@@ -66,7 +78,11 @@ export const ProjectList = ({ projects }: IProps) => {
                     </Link>
                   </MenuItem>
                   <MenuItem>
-                    <button type='button' className='block px-3 py-1 text-sm leading-6 text-red-500' onClick={() => {}}>
+                    <button
+                      type='button'
+                      className='block px-3 py-1 text-sm leading-6 text-red-500'
+                      onClick={() => handleDelete(project._id)}
+                    >
                       Remove
                     </button>
                   </MenuItem>

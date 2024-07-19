@@ -8,8 +8,8 @@ export const AppLayout = () => {
   return (
     <div className='dark:bg-background-dark'>
       <header className='py-5 dark:bg-primary-dark'>
-        <div className='max-w-screen-2xl mx-auto flex flex-col lg:flex-row justify-between items-center'>
-          <div className='w-64'>
+        <div className='mx-10 flex flex-row justify-between items-center'>
+          <div className='w-52'>
             <Logo />
           </div>
 

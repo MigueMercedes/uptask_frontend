@@ -1,7 +1,7 @@
 import { Project } from '@/types/projects'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { toast } from 'react-toastify'
-import { createProject, getOneProject, getProjects, updateProject } from '../api/project'
+import { createProject, deleteProject, getOneProject, getProjects, updateProject } from '../api/project'
 
 export const useCreateProjectMutation = () => {
   const queryClient = useQueryClient()
@@ -10,7 +10,6 @@ export const useCreateProjectMutation = () => {
     mutationFn: createProject,
     onSuccess: ({ message }) => {
       queryClient.invalidateQueries({ queryKey: ['projects'] })
-
       toast.success(message)
     },
     onError: ({ message }) => {
@@ -41,6 +40,21 @@ export const useUpdateProjectMutation = (id: Project['_id']) => {
     onSuccess: ({ message }) => {
       queryClient.invalidateQueries({ queryKey: ['projects'] })
       queryClient.invalidateQueries({ queryKey: ['update-project', id] })
+      toast.success(message)
+    },
+    onError: ({ message }) => {
+      toast.error(message)
+    }
+  })
+}
+
+export const useDeleteProjectMutation = () => {
+  const queryClient = useQueryClient()
+
+  return useMutation({
+    mutationFn: deleteProject,
+    onSuccess: ({ message }) => {
+      queryClient.invalidateQueries({ queryKey: ['projects'] })
       toast.success(message)
     },
     onError: ({ message }) => {

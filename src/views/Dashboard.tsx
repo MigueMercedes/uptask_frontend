@@ -5,7 +5,6 @@ import { Navigate } from 'react-router-dom'
 
 export const DashboardView = () => {
   const { data, isLoading, isError } = useGetProjectsQuery()
-
   if (isLoading) return 'Loading...'
 
   if (isError) return <Navigate to='/404' />
@@ -20,7 +19,7 @@ export const DashboardView = () => {
       </nav>
 
       {data?.length ? (
-        <ProjectList projects={data} />
+        <ProjectList projects={data}/>
       ) : (
         <p className='dark:text-white text-center py-20'>
           You don't have projects yet {''}
